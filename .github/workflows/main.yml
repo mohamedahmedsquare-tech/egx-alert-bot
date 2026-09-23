@@ -24,6 +24,6 @@ jobs:
 
       - name: Check prices and alert
         env:
-          TELEGRAM_BOT_TOKEN: ${{ 8962840813:AAHb4916RG3Lavj04bMZ1wKGVgKeUhJS97c }}
-          TELEGRAM_CHAT_ID: ${{ 5316337522 }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python egx_price_alert.py

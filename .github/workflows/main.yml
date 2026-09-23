@@ -1,0 +1,29 @@
+name: EGX Price Alert
+
+on:
+  # Runs every 30 minutes, 10:00-14:30 Cairo time (UTC+2), Sunday-Thursday
+  # (EGX trading days & hours). Cron times below are in UTC.
+  schedule:
+    - cron: "0,30 8-12 * * 0,1,2,3,4"
+  workflow_dispatch: {}   # lets you trigger it manually from the Actions tab
+
+jobs:
+  check-prices:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check prices and alert
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python egx_price_alert.py

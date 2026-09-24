@@ -95,7 +95,7 @@ def check_prices() -> None:
         message = "📈 فرصة شراء محتملة على EGX:\n\n" + "\n".join(alerts)
         send_telegram(message)
     else:
-        print("No stocks in buy zone right now — no alert sent.")
+        send_telegram("No stocks in buy zone right now — no alert sent.")
 
 
 if __name__ == "__main__":

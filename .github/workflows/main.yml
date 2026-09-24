@@ -4,7 +4,7 @@ on:
   # Runs every 30 minutes, 10:00-14:30 Cairo time (UTC+2), Sunday-Thursday
   # (EGX trading days & hours). Cron times below are in UTC.
   schedule:
-    - cron: "0,30 8-12 * * 0,1,2,3,4"
+    - cron: "0,30 7-10 * * 0,1,2,3,4"
   workflow_dispatch: {}   # lets you trigger it manually from the Actions tab
 
 jobs:
